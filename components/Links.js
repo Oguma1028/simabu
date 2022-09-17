@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 export const Links = () => {
   return (
-    <>
+    <div>
       <div className={styles.grid}>
         <a href="https://nextjs.org/docs" className={styles.card}>
           <h2>Documentation &rarr;</h2>
@@ -33,6 +33,6 @@ export const Links = () => {
           <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
         </a>
       </div>
-    </>
+    </div>
   );
 };
