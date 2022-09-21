@@ -15,7 +15,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Headline title="About Page" page="about" />
+        <Headline
+          title="About Page"
+          page="about"
+          onClick={() => alert("クリック！")}
+        />
         <Links />
       </main>
       <Footer />
