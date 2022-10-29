@@ -10,8 +10,6 @@ export const Headline = (props) => {
         Get started by editing{" "}
         <code className={styles.code}>pages/{props.page}</code>
       </p>
-
-      <button onClick={props.onClick}>これ</button>
     </div>
   );
 };
