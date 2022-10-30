@@ -3,13 +3,20 @@ import styles from "../styles/Home.module.css";
 import { Footer } from "../components/Footer";
 import { Main } from "../components/Main";
 import { Header } from "../components/Header";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Index() {
-  useEffect(() => {
-    document.body.style.backgroundColor = "lightblue";
-    return () => (document.body.style.backgroundColor = "");
-  }, []);
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(
+    (e) => {
+      console.log(count);
+      if (count < 10) {
+        setCount((foo) => foo + 1);
+      }
+    },
+    [count]
+  );
 
   return (
     <div className={styles.container}>
@@ -19,7 +26,8 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {/* <button onClick={handleClick}>de</button> */}
+      <button onClick={handleClick}></button>
+      <p>{count}</p>
       <Main />
       <Footer />
     </div>
