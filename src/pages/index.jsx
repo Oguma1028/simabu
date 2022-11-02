@@ -7,16 +7,27 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function Index() {
   const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
+  const [isShow, setIsShow] = useState(true);
 
-  const handleClick = useCallback(
-    (e) => {
-      console.log(count);
-      if (count < 10) {
-        setCount((foo) => foo + 1);
-      }
-    },
-    [count]
-  );
+  const handleClick = useCallback(() => {
+    console.log(count);
+    if (count < 10) {
+      setCount((count) => count + 1);
+    }
+  }, [count]);
+
+  const handleTextChange = useCallback((e) => {
+    if (e.target.value.length > 5) {
+      alert("5文字以下にしてください");
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
+  const handleDisplay = useCallback(() => {
+    setIsShow((isShow) => !isShow);
+  }, [isShow]);
 
   return (
     <div className={styles.container}>
@@ -26,8 +37,10 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <button onClick={handleClick}></button>
-      <p>{count}</p>
+      <input type="text" value={text} onChange={handleTextChange} />
+      <button onClick={handleClick}>増えるよ</button>
+      <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <p>{isShow ? count : null}</p>
       <Main />
       <Footer />
     </div>
